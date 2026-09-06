@@ -2,19 +2,19 @@ import css from "./VoteOptions.module.css";
 import type {VoteType} from "../../types/votes.ts";
 
 interface VoteOptionsProps {
-    handleVote: (vote: VoteType) => void;
-    resetVotes: () => void;
+    onVote: (vote: VoteType) => void;
+    onReset: () => void;
     canReset: boolean;
 }
 
-function VoteOptions({handleVote, resetVotes, canReset}: VoteOptionsProps) {
+function VoteOptions({onVote, onReset, canReset}: VoteOptionsProps) {
     {
         return (
             <div className={css.container}>
-                <button onClick={() => handleVote("good")} className={css.button}>Good</button>
-                <button onClick={() => handleVote("neutral")} className={css.button}>Neutral</button>
-                <button onClick={() => handleVote("bad")} className={css.button}>Bad</button>
-                {canReset && <button onClick={resetVotes} className={`${css.button} ${css.reset}`}>Reset</button>}
+                <button onClick={() => onVote("good")} className={css.button}>Good</button>
+                <button onClick={() => onVote("neutral")} className={css.button}>Neutral</button>
+                <button onClick={() => onVote("bad")} className={css.button}>Bad</button>
+                {canReset && <button onClick={onReset} className={`${css.button} ${css.reset}`}>Reset</button>}
             </div>
         )
     }
