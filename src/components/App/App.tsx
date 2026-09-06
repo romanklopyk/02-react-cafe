@@ -4,16 +4,9 @@ import CafeInfo from '../CafeInfo/CafeInfo.tsx';
 import VoteOptions from "../VoteOptions/VoteOptions.tsx";
 import VoteStats from "../VoteStats/VoteStats.tsx";
 import Notification from "../Notification/Notification.tsx";
+import type {VoteType, Vote} from "../types.ts";
 
 function App() {
-
-    interface Vote {
-        good: number;
-        bad: number;
-        neutral: number;
-    }
-
-    type voteType = "good" | "bad" | "neutral";
 
     const [votes, setVotes] = React.useState<Vote>({good: 0, bad: 0, neutral: 0});
 
@@ -22,11 +15,11 @@ function App() {
     const positiveRate = totalVotes ? Math.round((votes.good / totalVotes) * 100) : 0;
 
 
-    function handleVote(type: voteType) {
+    function handleVote(type: VoteType):void {
         setVotes(prev => ({...prev, [type]: prev[type] + 1}));
     }
 
-    function resetVotes() {
+    function resetVotes():void {
         setVotes({good: 0, bad: 0, neutral: 0})
     }
 

@@ -1,6 +1,13 @@
 import css from "./VoteOptions.module.css";
+import type {VoteType} from "../types.ts";
 
-function VoteOptions({handleVote, resetVotes, canReset}) {
+interface VoteOptionsProps {
+    handleVote: (vote: VoteType) => void;
+    resetVotes: () => void;
+    canReset: boolean;
+}
+
+function VoteOptions({handleVote, resetVotes, canReset}: VoteOptionsProps) {
     {
         return (
             <div className={css.container}>
